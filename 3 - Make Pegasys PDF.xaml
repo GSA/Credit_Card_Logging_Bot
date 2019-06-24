@@ -1,0 +1,284 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="____Make_Pegasys_PDF" this:____Make_Pegasys_PDF.in_PDF_Filepath="Z:\RPA Development\Watson WAT-T04\Credit Card Logging WAT-T04-P01\Credit Card Log\PDF Files\" this:____Make_Pegasys_PDF.in_attachment_file_path="Z:\RPA Development\Watson WAT-T04\Credit Card Logging WAT-T04-P01\Credit Card Log\PDF Files\PDF Generator.xlsx" this:____Make_Pegasys_PDF.in_CL_num="TEST CL"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.uipath.com/workflow/activities/word"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:this="clr-namespace:"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_PDF_Filepath" Type="InArgument(x:String)" />
+    <x:Property Name="in_attachment_file_path" Type="InArgument(x:String)" />
+    <x:Property Name="in_CL_num" Type="InArgument(x:String)" />
+    <x:Property Name="in_dt" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="out_pegasys_attachment" Type="OutArgument(x:String)" />
+    <x:Property Name="out_PDF_error" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="in_row_number" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>____Make_Pegasys_PDF_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="3 - Make Pegasys PDF" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="Test-Ref-Num" Name="ref_number" />
+      <Variable x:TypeArguments="ui:WorkbookApplication" Name="wb" />
+      <Variable x:TypeArguments="sd:DataRow" Name="current_row" />
+      <Variable x:TypeArguments="sd:DataTable" Name="paste_table" />
+      <Variable x:TypeArguments="x:Boolean" Name="acrobat" />
+      <Variable x:TypeArguments="x:Int32" Name="days" />
+      <Variable x:TypeArguments="s:DateTime" Name="dateRequest" />
+      <Variable x:TypeArguments="s:DateTime" Name="manApprove" />
+      <Variable x:TypeArguments="s:DateTime" Name="AOApprove" />
+      <Variable x:TypeArguments="s:DateTime" Name="FCApprove" />
+      <Variable x:TypeArguments="x:String" Name="word_doc" />
+    </Sequence.Variables>
+    <Sequence DisplayName="Get Data Row for PDF Creation" sap2010:WorkflowViewState.IdRef="Sequence_32">
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[paste_table]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[in_dt.clone]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataRow">[current_row]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataRow">[in_dt.Rows(in_row_number)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[current_row.ItemArray]" DataTable="[paste_table]" DisplayName="Add data row" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+    </Sequence>
+    <Sequence DisplayName="Create PDF" sap2010:WorkflowViewState.IdRef="Sequence_43">
+      <Sequence DisplayName="Assign Variables" sap2010:WorkflowViewState.IdRef="Sequence_47">
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_11">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[ref_number]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_dt.Rows(in_row_number).Item(0).ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_12">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_pegasys_attachment]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_CL_num+"-"+ref_number+".pdf"]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_26">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[word_doc]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDF_Filepath+in_CL_num+"-"+ref_number+".docx"]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </Sequence>
+      <ui:CopyFile ContinueOnError="{x:Null}" Destination="[word_doc]" DisplayName="Copy file" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="False" Path="[in_attachment_file_path]" />
+      <Sequence DisplayName="Fill Word Form" sap2010:WorkflowViewState.IdRef="Sequence_45">
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_1" Replace="[in_dt.Rows(in_row_number).Item(41).ToString]" Search="&lt;PDN&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_2" Replace="[in_dt.Rows(in_row_number).Item(1).ToString]" Search="&lt;Requestor&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_3" Replace="[in_dt.Rows(in_row_number).Item(2).ToString]" Search="&lt;DateRequest&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_4" Replace="[in_dt.Rows(in_row_number).Item(4).ToString]" Search="&lt;Description&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_5" Replace="[in_dt.Rows(in_row_number).Item(0).ToString]" Search="&lt;Reference&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_6" Replace="[in_dt.Rows(in_row_number).Item(5).ToString]" Search="&lt;RequestAmount&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_7" Replace="[in_dt.Rows(in_row_number).Item(6).ToString]" Search="&lt;Vendor&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_8" Replace="[in_dt.Rows(in_row_number).Item(7).ToString]" Search="&lt;DUNS&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_9" Replace="[in_dt.Rows(in_row_number).Item(33).ToString]" Search="&lt;CardHolder&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_10" Replace="[in_dt.Rows(in_row_number).Item(10).ToString]" Search="&lt;Building&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_11" Replace="[in_dt.Rows(in_row_number).Item(8).ToString]" Search="&lt;Org&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_12" Replace="[in_dt.Rows(in_row_number).Item(9).ToString]" Search="&lt;BA&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_13" Replace="[in_dt.Rows(in_row_number).Item(28).ToString]" Search="&lt;Func&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_14" Replace="[in_dt.Rows(in_row_number).Item(29).ToString]" Search="&lt;SOC&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_15" Replace="[in_dt.Rows(in_row_number).Item(11).ToString]" Search="&lt;RWA&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_16" Replace="[in_dt.Rows(in_row_number).Item(12).ToString]" Search="&lt;Project&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_17" Replace="[in_dt.Rows(in_row_number).Item(13).ToString]" Search="&lt;WI&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_18" Replace="[in_dt.Rows(in_row_number).Item(14).ToString]" Search="&lt;Manager&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_19" Replace="[in_dt.Rows(in_row_number).Item(16).ToString]" Search="&lt;ManApp&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_20" Replace="[in_dt.Rows(in_row_number).Item(17).ToString]" Search="&lt;ManDate&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_21" Replace="[in_dt.Rows(in_row_number).Item(18).ToString]" Search="&lt;AO&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_22" Replace="[in_dt.Rows(in_row_number).Item(20).ToString]" Search="&lt;AOApp&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_23" Replace="[in_dt.Rows(in_row_number).Item(21).ToString]" Search="&lt;AODate&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_24" Replace="[in_dt.Rows(in_row_number).Item(23).ToString]" Search="&lt;FC&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_25" Replace="[in_dt.Rows(in_row_number).Item(24).ToString]" Search="&lt;FCApp&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_26" Replace="[in_dt.Rows(in_row_number).Item(25).ToString]" Search="&lt;FCDate&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_27" Replace="[in_dt.Rows(in_row_number).Item(37).ToString]" Search="&lt;OrderDate&gt;" />
+        <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_28" Replace="[in_dt.Rows(in_row_number).Item(43).ToString]" Search="&lt;Remarks&gt;" />
+      </Sequence>
+      <p:WordApplicationScope DisplayName="Convert to PDF" FilePath="[word_doc]" sap2010:WorkflowViewState.IdRef="WordApplicationScope_2">
+        <p:WordApplicationScope.Body>
+          <ActivityAction x:TypeArguments="ui:WordDocument">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_44">
+              <p:WordExportToPdf DisplayName="Export to PDF" FilePath="[in_PDF_Filepath + in_CL_num+&quot;-&quot;+ref_number]" sap2010:WorkflowViewState.IdRef="WordExportToPdf_3" />
+            </Sequence>
+          </ActivityAction>
+        </p:WordApplicationScope.Body>
+      </p:WordApplicationScope>
+    </Sequence>
+    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="AddDataRow_1" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="Sequence_32" sap:VirtualizedContainerService.HintSize="286,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_12" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_26" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_47" sap:VirtualizedContainerService.HintSize="264,384">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CopyFile_2" sap:VirtualizedContainerService.HintSize="264,22" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_1" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_2" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_3" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_4" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_5" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_6" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_7" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_8" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_9" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_10" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_11" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_12" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_13" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_14" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_15" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_16" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_17" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_18" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_19" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_20" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_21" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_22" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_23" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_24" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_25" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_26" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_27" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_28" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Sequence_45" sap:VirtualizedContainerService.HintSize="264,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordExportToPdf_3" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="Sequence_44" sap:VirtualizedContainerService.HintSize="336,183">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_2" sap:VirtualizedContainerService.HintSize="264,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_43" sap:VirtualizedContainerService.HintSize="286,752">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="308,967">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="____Make_Pegasys_PDF_1" sap:VirtualizedContainerService.HintSize="348,1047" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

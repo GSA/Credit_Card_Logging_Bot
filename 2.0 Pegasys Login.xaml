@@ -1,0 +1,281 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="__0_Pegasys_Login"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ss="clr-namespace:System.Security;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_browse" Type="OutArgument(ui:Browser)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>__0_Pegasys_Login_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="2.0 Pegasys Login" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:OpenBrowser BrowserType="Chrome" DisplayName="Navigate to Pegasys Site" Hidden="False" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" UiBrowser="[out_browse]" Url="https://pegasys-phdc.gsa.gov/momex/">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Pegasys Login" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="username" />
+              <Variable x:TypeArguments="ss:SecureString" Name="password" />
+            </Sequence.Variables>
+            <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <TryCatch.Try>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                    <TryCatch.Try>
+                      <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Intermediate Software'" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="7f205609577e8351d9f65c840964d448" Selector="&lt;webctrl idx='27' /&gt;" TimeoutMS="5000" WaitForReady="INTERACTIVE" />
+                        </ui:Click.Target>
+                      </ui:Click>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Accept &amp; Continue" sap2010:WorkflowViewState.IdRef="ClickImage_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+                            <ui:ClickImage.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:ClickImage.CursorPosition>
+                            <ui:ClickImage.Image>
+                              <ui:ImageTarget Image="{x:Null}" Accuracy="0.6" TargetImageBase64="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" />
+                            </ui:ClickImage.Image>
+                            <ui:ClickImage.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:ClickImage.Target>
+                          </ui:ClickImage>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                  <ui:GetSecureCredential CredentialType="Generic" DisplayName="Get secure credential" sap2010:WorkflowViewState.IdRef="GetSecureCredential_2" Password="[password]" PersistanceType="Enterprise" Target="pegasys" Username="[username]" />
+                  <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Username" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="False" Text="[username]">
+                    <ui:TypeInto.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f9bf4eb0f8bacc67b477c325877d15cf" Selector="&lt;webctrl id='j_username' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:TypeInto.Target>
+                  </ui:TypeInto>
+                  <ui:TypeSecureText DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type secure text 'INPUT  j_password'" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeSecureText_2" SecureText="[password]" SendWindowMessages="False" SimulateType="False">
+                    <ui:TypeSecureText.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9a8095d3c23b5db1ea68c21f4fd01af5" Selector="&lt;webctrl id='j_password' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:TypeSecureText.Target>
+                  </ui:TypeSecureText>
+                  <ui:Click DelayBefore="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="300" DisplayName="Click Sign In" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2fa5640eb61a5919cf5fb8266f7975cf" Selector="&lt;webctrl tag='BUTTON' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'BUTTON  ydMBae'" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="668fb3fe30267cf9f91e18378a1f31f5" Selector="&lt;webctrl id='ydMBae' tag='BUTTON' /&gt;" TimeoutMS="8000" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                  <ui:Click DelayBefore="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="2000" DisplayName="Click Home Icon" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="884370d9dc12508134a4c7e1a4cd1396" Selector="&lt;webctrl parentid='wfx-home' tag='BUTTON' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <ActivityAction x:TypeArguments="s:Exception">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                    </ActivityAction.Argument>
+                    <ui:Click DelayBefore="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="2000" DisplayName="Click Home Icon" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="ee736f291e7d2a91112bf8fc6632f0af" Selector="&lt;webctrl id='j_username' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                      </ui:Click.Target>
+                    </ui:Click>
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
+          </Sequence>
+        </ActivityAction>
+      </ui:OpenBrowser.Body>
+    </ui:OpenBrowser>
+    <sads:DebugSymbol.Symbol>d35YOlxSUEEgRGV2ZWxvcG1lbnRcV2F0c29uIFdBVC1UMDRcQ3JlZGl0IENhcmQgTG9nZ2luZyBXQVQtVDA0LVAwMVxVaVBhdGggQ29kZVxBcmNoaXZlZCBWZXJzaW9uXENDIEZpbGVzXDIuMCBQZWdhc3lzIExvZ2luLnhhbWwkRgPbAQ4CAQFHBdkBFgIBAke8AUfKAQIBKEfPAUf0AQIBJ00L1gEWAgEDUg3VARgCAQRUEbsBHAIBCMMBFdEBIAIBBVUTggEeAgEhgwETgwH8AQIBG4QBE4gBIQIBF4kBE40BJwIBE44BE5wBHgIBEJ0BE6sBHgIBDKwBE7oBHgIBCc8BqAHPAdcBAgEHwwFXwwFdAgEGVxdlIgIBJG0bfisCASKDAdoBgwHjAQIBIIMB7QGDAfkBAgEegwGpAYMBtQECARyGAaYBhgHVAQIBGoQBoQKEAa0CAgEYiwGmAYsB1QECARaJAZoCiQGmAgIBFJoBpgGaAcYBAgESjgFVjgFaAgERqQGRAakBvQECAQ+pAcgBqQHOAQIBDp0BcJ0BdgIBDbgBpgG4AdoBAgELrAFVrAFbAgEKY5UBY7EBAgEmY7wBY8IBAgEleUl5TgIBIw==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Click_7" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="ClickImage_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Catch`1_2" sap:VirtualizedContainerService.HintSize="400,175">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_2" sap:VirtualizedContainerService.HintSize="414,337" />
+      <sap2010:ViewStateData Id="GetSecureCredential_2" sap:VirtualizedContainerService.HintSize="414,22" />
+      <sap2010:ViewStateData Id="TypeInto_2" sap:VirtualizedContainerService.HintSize="414,134" />
+      <sap2010:ViewStateData Id="TypeSecureText_2" sap:VirtualizedContainerService.HintSize="414,106" />
+      <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="414,106" />
+      <sap2010:ViewStateData Id="Click_6" sap:VirtualizedContainerService.HintSize="414,106" />
+      <sap2010:ViewStateData Id="Click_4" sap:VirtualizedContainerService.HintSize="414,106" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="436,1281">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Click_5" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="440,21">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="454,1508" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="476,1632">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="414,150">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="436,274">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="__0_Pegasys_Login_1" sap:VirtualizedContainerService.HintSize="476,354" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

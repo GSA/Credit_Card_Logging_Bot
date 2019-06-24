@@ -1,0 +1,219 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Initialize"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_excel_path" Type="OutArgument(x:String)" />
+    <x:Property Name="out_pdf_path" Type="OutArgument(x:String)" />
+    <x:Property Name="out_attachment_path" Type="OutArgument(x:String)" />
+    <x:Property Name="out_excel_folder" Type="OutArgument(x:String)" />
+    <x:Property Name="out_google_doc" Type="OutArgument(x:String)" />
+    <x:Property Name="out_batch_number" Type="OutArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Initialize_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Initialize BOT" sap2010:WorkflowViewState.IdRef="Sequence_22">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="\\e04bmv-cifs01\R13_CFO_share$\R13_RPA\RPA Production\Watson WAT-T04\Credit Card Logging WAT-T04-P01\UiPath Code\BOTs Inputs and Outputs\Inputs\" Name="excelPath" />
+      <Variable x:TypeArguments="x:String" Default="\\e04bmv-cifs01\R13_CFO_share$\R13_RPA\RPA Production\Watson WAT-T04\Credit Card Logging WAT-T04-P01\UiPath Code\BOTs Inputs and Outputs\Inputs\" Name="excelFolder" />
+      <Variable x:TypeArguments="x:String" Default="\\e04bmv-cifs01\R13_CFO_share$\R13_RPA\RPA Production\Watson WAT-T04\Credit Card Logging WAT-T04-P01\UiPath Code\BOTs Inputs and Outputs\Outputs\" Name="PDF_path" />
+      <Variable x:TypeArguments="x:String" Default="\\e04bmv-cifs01\R13_CFO_share$\R13_RPA\RPA Production\Watson WAT-T04\Credit Card Logging WAT-T04-P01\UiPath Code\BOTs Inputs and Outputs\Outputs\PDF Generator.docx" Name="attach_path" />
+      <Variable x:TypeArguments="x:String" Name="zone" />
+    </Sequence.Variables>
+    <Assign>
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[out_batch_number]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+      </Assign.Value>
+      <sap2010:WorkflowViewState.IdRef>Assign_53</sap2010:WorkflowViewState.IdRef>
+    </Assign>
+    <Sequence DisplayName="Assign File Paths - BOT  Input/Output" sap2010:WorkflowViewState.IdRef="Sequence_23">
+      <Assign DisplayName="Excel File Path" sap2010:WorkflowViewState.IdRef="Assign_38">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_excel_path]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[excelPath+now.Date.month.ToString+"-"+now.Date.day.ToString+" "+System.DateTime.Now.ToString(“hh-mm-ss”)+".csv"]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Excel File Folder Path" sap2010:WorkflowViewState.IdRef="Assign_39">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_excel_folder]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[excelFolder]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="PDF Folder Path" sap2010:WorkflowViewState.IdRef="Assign_40">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_pdf_path]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[PDF_path]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="PDF Generator File Path" sap2010:WorkflowViewState.IdRef="Assign_41">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_attachment_path]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[attach_path]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <ui:InputDialog DisplayName="Input dialog - Select Zone or Nationwide" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please Select Source:" Options="[{&quot;Zone 1&quot;,&quot;Zone 2&quot;,&quot;Zone 3&quot;,&quot;Zone 4&quot;,&quot;All Zones&quot;}]" Title="Select Zone">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[zone]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <Switch x:TypeArguments="x:String" DisplayName="Switch - Assign Google Doc to Download Based on Input" Expression="[zone]" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+      <Assign x:Key="Zone 1" sap2010:WorkflowViewState.IdRef="Assign_43">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_google_doc]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["https://docs.google.com/spreadsheets/d/1GfohROMWhc1jU6AIdwTqncoQn4CNk3XbgaGmW1V2aL4"+"/export?format=csv"]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign x:Key="Zone 2" sap2010:WorkflowViewState.IdRef="Assign_49">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_google_doc]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["https://docs.google.com/spreadsheets/d/1vPlnz6beH9pHYoiEYOxNJ1kTH6lUwVBldPBAF8MLBW8"+"/export?format=csv"]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign x:Key="Zone 3" sap2010:WorkflowViewState.IdRef="Assign_50">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_google_doc]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["https://docs.google.com/spreadsheets/d/10RfSfAy8VFfOGnViZ1vE3jgp1Zkuy5gJjPVzRSKWOBc"+"/export?format=csv"]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign x:Key="Zone 4" sap2010:WorkflowViewState.IdRef="Assign_51">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_google_doc]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["https://docs.google.com/spreadsheets/d/1FHZ5hcawy7QrMDDP19loP_D_P3ntw-c7FNGUrrokrYA"+"/export?format=csv"]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign x:Key="All Zones" sap2010:WorkflowViewState.IdRef="Assign_52">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_google_doc]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">["https://docs.google.com/spreadsheets/d/1-VbZ3GQC3bG1hE9ACpuURD7wJrZ2uwN7cJIfIJ6Qt4Y"+"/export?format=csv"]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Switch>
+    <sads:DebugSymbol.Symbol>d3tYOlxSUEEgRGV2ZWxvcG1lbnRcV2F0c29uIFdBVC1UMDRcQ3JlZGl0IENhcmQgTG9nZ2luZyBXQVQtVDA0LVAwMVxVaVBhdGggQ29kZVxBcmNoaXZlZCBWZXJzaW9uXENDIEZpbGVzXDAgLSBJbml0aWFsaXplLnhhbWwrSQOsAQ4CAQFLNEvGAQIBBUw0TMYBAgEETTRNxwECAQNONE7ZAQIBAlEFWQ4CATdaBXsQAgEjfAWAARYCAR2BAQWqAQ4CAQZWL1YwAgE6UzBTQgIBOFsHYhACATNjB2oQAgEuawdyEAIBKXMHehACASR8lQF8rAECASJ8tQF8nAICASF+MX43AgEffKMCfLACAgEegQF3gQF/AgEHggEHiQEQAgEZigEHkQEQAgEVkgEHmQEQAgERmgEHoQEQAgENogEHqQEQAgEJYDJgowECATZdM11DAgE0aDJoPwIBMWUzZUUCAS9wMnA8AgEsbTNtQQIBKngyeD8CASd1M3VIAgElhwEyhwGeAQIBHIQBM4QBQwIBGo8BMo8BngECARiMATOMAUMCARaXATKXAZ4BAgEUlAEzlAFDAgESnwEynwGeAQIBEJwBM5wBQwIBDqcBMqcBngECAQykATOkAUMCAQo=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_53" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_38" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_39" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_40" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_41" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_23" sap:VirtualizedContainerService.HintSize="242,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="242,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_43" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_49" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_50" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_51" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_52" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Switch`1_2" sap:VirtualizedContainerService.HintSize="242,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_22" sap:VirtualizedContainerService.HintSize="264,457">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Initialize_1" sap:VirtualizedContainerService.HintSize="262,517" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

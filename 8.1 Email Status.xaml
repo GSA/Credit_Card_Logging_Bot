@@ -1,0 +1,226 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="__1_Email_Success" this:__1_Email_Success.In_Message="Test" this:__1_Email_Success.In_CardHolder="matthew.taylor@gsa.gov" this:__1_Email_Success.In_CFO="matthew.taylor@gsa.gov,jared.king@gsa.gov,nick.surkamp@gsa.gov,aaron.prince@gsa.gov" this:__1_Email_Success.In_URL="google.com" this:__1_Email_Success.In_RefNumber="Ref#" this:__1_Email_Success.In_CL="CL#" this:__1_Email_Success.In_error="False"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:this="clr-namespace:"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_Message" Type="InArgument(x:String)" />
+    <x:Property Name="In_CardHolder" Type="InArgument(x:String)" />
+    <x:Property Name="In_CFO" Type="InArgument(x:String)" />
+    <x:Property Name="In_URL" Type="InArgument(x:String)" />
+    <x:Property Name="In_RefNumber" Type="InArgument(x:String)" />
+    <x:Property Name="In_CL" Type="InArgument(x:String)" />
+    <x:Property Name="In_error" Type="InArgument(x:Boolean)" />
+    <x:Property Name="In_Pegasys_Attachment" Type="InArgument(x:String)" />
+    <x:Property Name="In_PDF_Filepath" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>__1_Email_Success_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Windows.Documents</x:String>
+      <x:String>System.Windows</x:String>
+      <x:String>System.Windows.Media.Animation</x:String>
+      <x:String>System.Windows.Input</x:String>
+      <x:String>System.Windows.Threading</x:String>
+      <x:String>System.Web.UI.WebControls</x:String>
+      <x:String>System.Web.UI</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>System.Windows.Presentation</AssemblyReference>
+      <AssemblyReference>System.Web</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>UiPath.Java.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="8.1 Email Success" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="style" />
+      <Variable x:TypeArguments="x:String" Name="header" />
+      <Variable x:TypeArguments="x:String" Name="body" />
+      <Variable x:TypeArguments="x:String" Name="footer" />
+      <Variable x:TypeArguments="x:String" Default="rpaprd01_gsa_rpa01.noreply@gsa.gov" Name="vBotEmail" />
+      <Variable x:TypeArguments="x:String" Name="content" />
+    </Sequence.Variables>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[In_URL]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[In_URL.Replace("=AO","=A")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[In_error]" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[header]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["&lt;p style='color: black;font-size:30px;font-weight:bold'&gt;Credit Card Automation Status: &lt;font color='red'&gt;Failed&lt;/font&gt;&lt;/p&gt;"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[body]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;p style='padding:8px; color: grey; background-color: white; border: grey 1px solid;font-size:22px;'&gt;Reference Number: " + "&lt;a href="+In_URL+"&gt;"+In_RefNumber.ToString+"&lt;/a&gt;"  + "&lt;br/&gt;" + "Reason for Failure:  " + In_Message  + "&lt;/p&gt;"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[content]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[header+body]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" Body="[content]" DisplayName="Send Confirmation Email" EnableSSL="True" From="[vBotEmail]" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="True" Port="25" SecureConnection="None" Server="smtp.gsa.gov" Subject="[&quot;Failed Credit Card Log Creation - Reference #: &quot; + In_RefNumber]" To="[In_CFO.ToString+&quot;,&quot;+In_CardHolder.ToString+&quot;,matthew.taylor@gsa.gov,jared.king@gsa.gov,nick.surkamp@gsa.gov,aaron.prince@gsa.gov&quot;]">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+            </ui:SendMail.Files>
+          </ui:SendMail>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[header]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["&lt;p style='color: black;font-size:30px;font-weight:bold'&gt;Credit Card Automation Status: &lt;font color='green'&gt;Successful&lt;/font&gt;&lt;/p&gt;"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[body]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;p style='padding:8px; color: grey; background-color: white; border: grey 1px solid;font-size:22px;'&gt;Reference Number: " + "&lt;a href="+In_URL+"&gt;"+In_RefNumber.ToString+"&lt;/a&gt;"+ "&lt;br/&gt;" + "Pegasys Document Number:  " + In_CL  + "&lt;/p&gt;"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_16">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[footer]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;p style='color: black;font-size:14px;font-weight:bold'&gt;Note: The Micro_Purchase BOT received a successful submission message from Pegasys.  There may be a delayed rejection in Pegasys.  If this item is not in your inbox, search for it in rejected status.&lt;/p&gt;"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[content]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[header+body+footer]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" Body="[content]" DisplayName="Send Confirmation Email" EnableSSL="True" From="[vBotEmail]" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="True" Port="25" SecureConnection="None" Server="smtp.gsa.gov" Subject="[&quot;Successful Credit Card Log Creation - Reference #: &quot; + In_RefNumber]" To="[In_CFO.ToString+&quot;,&quot;+In_CardHolder.ToString+&quot;,matthew.taylor@gsa.gov,jared.king@gsa.gov,nick.surkamp@gsa.gov,aaron.prince@gsa.gov&quot;]">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                <InArgument x:TypeArguments="x:String">[In_PDF_Filepath+In_Pegasys_Attachment]</InArgument>
+              </scg:List>
+            </ui:SendMail.Files>
+          </ui:SendMail>
+        </Sequence>
+      </If.Else>
+    </If>
+    <sads:DebugSymbol.Symbol>d31YOlxSUEEgRGV2ZWxvcG1lbnRcV2F0c29uIFdBVC1UMDRcQ3JlZGl0IENhcmQgTG9nZ2luZyBXQVQtVDA0LVAwMVxVaVBhdGggQ29kZVxBcmNoaXZlZCBWZXJzaW9uXENDIEZpbGVzXDguMSBFbWFpbCBTdGF0dXMueGFtbDEBlQEBrAEBCAHAAgHLAgEHAcwBAaACAQYBlQMBmQMBBQFpAW4BBAHxAgH2AgEDAbsDAcEDAQJcA7wBDgIBAWI0YlgCAQJlBWwOAgFKbQW6AQoCAQNqMGpMAgFNZzFnOQIBS20TbR8CAQRvCY0BFAIBLJABCbgBFAIBBnALdxQCAUZ4C38UAgE/gAELhwEUAgE5iAELjAEZAgEtkQELmAEUAgEomQELoAEUAgEhoQELqAEUAgEdqQELsAEUAgEWsQELtwEZAgEHdTZ1zAECAUlyN3I/AgFHejd6PQIBQIUBNoUBQwIBPIIBN4IBQAIBOogBwgOIAdsEAgE2iAGbAYgBpgECATSIAfACiAG+AwIBMogB4wGIAfABAgEwiAG1AogBuQICAS+IAdkCiAHnAgIBLpYBNpYB0gECASuTATeTAT8CASmbATebAT0CASKjATejAT8CAR6uATauAUoCARmrATerAUACARexAcYDsQHfBAIBE7QBOLQBXwIBELEBmwGxAaYBAgEOsQHwArEBwgMCAQyxAeMBsQHwAQIBCrEBtQKxAbkCAgEJsQHZArEB5wICAQg=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="697,60" />
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="SendMail_2" sap:VirtualizedContainerService.HintSize="314,145" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,569">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_12" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Assign_16" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="SendMail_1" sap:VirtualizedContainerService.HintSize="314,145" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,669">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="697,817" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="719,1041">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="__1_Email_Success_1" sap:VirtualizedContainerService.HintSize="759,1121" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

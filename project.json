@@ -1,0 +1,14 @@
+{
+  "name": "CC Files",
+  "description": "Project",
+  "main": "0 - Initialize.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.2",
+  "projectVersion": "1.0.7068.25153",
+  "packOptions": {},
+  "runtimeOptions": {}
+}
