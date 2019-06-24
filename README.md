@@ -2,7 +2,7 @@
 
 ## Getting Started 
 
-These files  will get you a copy of the project up and running on your local machine for development and testing purposes. Reach out to GSA at rpa.gsa.gov for notes on how to deploy the project on a live system.
+These files will help you understand how to get a similar project up and running on your local machine for development and testing purposes. Reach out to GSA at rpa.gsa.gov for notes on how to deploy the project on a live system.
 
 Note that many of these bots touch on and operate in a system unique to GSA, and moderate to substantial modification may be required for your system to run the process. 
 
